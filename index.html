@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My HTML Project</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: url("sharingan-background-image.jpg") no-repeat center center fixed;
+      background-size: cover;
+      color: rgba(229, 227, 231, 0.856);
+      overflow-x: hidden;
+    }
+
+    /* 🔥 EPIC HEADING */
+    h1 {
+      text-align: center;
+      margin-top: 120px;
+      font-size: 80px;
+      font-weight: 900;
+      font-family: "Impact", "Oswald", sans-serif;
+      text-transform: uppercase;
+      color: #ff0000;
+      letter-spacing: 6px;
+      text-shadow: 
+        0 0 10px #ff3300,
+        0 0 20px #ff6600,
+        0 0 40px #cc0000,
+        0 0 80px #ff0000;
+      animation: flameGlow 2s infinite alternate, fadeIn 2s ease-in-out;
+    }
+
+    @keyframes flameGlow {
+      from { text-shadow: 0 0 15px #eee3e1, 0 0 30px #d6d5d4, 0 0 45px #bb60df; }
+      to   { text-shadow: 0 0 25px #9620e4, 0 0 50px #720788, 0 0 90px #c5afaf; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    /* Neon paragraph */
+    p {
+      font-family: "MV Boli", cursive;
+      font-size: 22px;
+      color: #00ffff; 
+      text-align: center;
+      margin: 30px auto;
+      width: 80%;
+      text-shadow: 
+        0 0 5px #00ffff,
+        0 0 10px #00ffff,
+        0 0 20px #00ffff,
+        0 0 30px #00ffff,
+        0 0 40px #00ffff;
+      -webkit-text-stroke: 1px #00ffff;
+    }
+
+    /* Spinning Sharingan icon */
+    .sharingan {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 100px;
+      height: auto;
+      animation: spin 5s linear infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* Neon buttons */
+    .audio-controls {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 20px;
+    }
+
+    .audio-controls button {
+      padding: 14px 28px;
+      font-size: 20px;
+      font-weight: bold;
+      font-family: "Arial Black", sans-serif;
+      color: #00ffff;
+      background-color: #0a0a0a;
+      border: 2px solid #00ffff;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 
+        0 0 5px #00ffff,
+        0 0 10px #00ffff,
+        0 0 20px #00ffff,
+        0 0 40px #00ffff;
+      text-shadow: 0 0 5px #00ffff;
+      animation: neonPulse 2s infinite alternate;
+    }
+
+    @keyframes neonPulse {
+      from {
+        box-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 40px #00ffff;
+        text-shadow: 0 0 5px #00ffff;
+      }
+      to {
+        box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 80px #00ffff;
+        text-shadow: 0 0 10px #00ffff;
+      }
+    }
+
+    .audio-controls button:hover {
+      background-color: #00ffff;
+      color: #0a0a0a;
+      border-color: #00ffff;
+      box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 60px #00ffff, 0 0 80px #00ffff;
+      text-shadow: 0 0 15px #00ffff;
+    }
+
+    /* Neon Clock Top-left */
+    #neonClock {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      font-family: "Arial Black", sans-serif;
+      font-size: 35px;
+      color: #00ffff;
+      text-shadow: 
+        0 0 5px #00ffff,
+        0 0 10px #00ffff,
+        0 0 20px #00ffff,
+        0 0 30px #00ffff;
+      z-index: 1000;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Neon Clock -->
+  <div id="neonClock"></div>
+
+  <!-- Sharingan Icon -->
+  <img src="sharingan.png" alt="Sharingan" class="sharingan" />
+
+  <!-- Epic Heading -->
+  <h1>WAKE UP TO REALITY !!</h1>
+
+  <!-- Neon Paragraph -->
+  <p>This is my first ever experience with HTML 😃. I'm learning now and this is just the beginning!</p>
+
+  <!-- Audio Controls -->
+  <div class="audio-controls">
+    <button onclick="document.getElementById('bgMusic').play()">▶ PLAY</button>
+    <button onclick="document.getElementById('bgMusic').pause();document.getElementById('bgMusic').currentTime=0;">⏹ STOP</button>
+  </div>
+
+  <!-- Background Music -->
+  <audio id="bgMusic" loop>
+    <source src="haseen.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    // Neon Clock
+    function updateClock() {
+      const clock = document.getElementById("neonClock");
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2,"0");
+      const minutes = String(now.getMinutes()).padStart(2,"0");
+      const seconds = String(now.getSeconds()).padStart(2,"0");
+      clock.textContent = `${hours}:${minutes}:${seconds}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+
+</body>
+</html>
